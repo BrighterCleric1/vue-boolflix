@@ -38,7 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 main {
-  height: 800px;
   background-color: #303030;
 }
 </style>

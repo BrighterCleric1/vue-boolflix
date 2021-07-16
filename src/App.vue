@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :ricercaFilm()="ricercaFilm()" @selectFilm="searchFilmInput" />
+    <Header @selectFilm="searchFilmInput" />
     <Main :filmsProva="filmsProva" />
   </div>
 </template>
@@ -36,8 +36,19 @@ export default {
   methods: {
     searchFilmInput: function (inputString) {
       this.inputSearch = inputString.trim();
+
+      const request = {
+        params: {
+          api_key: this.apiKey,
+          query: this.inputSearch,
+        },
+      };
+
+      axios.get(this.apiUrl, request).then((result) => {
+        this.filmsProva = result.data.results;
+      });
     },
-    ricercaFilm: function () {
+    /* ricercaFilm: function () {
       const request = {
         params: {
           api_key: this.apiKey,
@@ -47,7 +58,7 @@ export default {
       axios.get(this.apiUrl, request).then((result) => {
         this.filmsProva = result.data.results;
       });
-    },
+    },*/
   },
 };
 </script>

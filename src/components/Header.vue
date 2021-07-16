@@ -24,9 +24,8 @@
               v-model="inputString"
               placeholder="cerca un film"
               type="text"
-              @keyup="$emit('selectFilm', inputString)"
             />
-            <button @click="ricercaFilm()">Premi</button>
+            <button @click="$emit('selectFilm', inputString)">Premi</button>
           </div>
           <div class="category">Bambini</div>
           <div class="notify"></div>

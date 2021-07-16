@@ -29,18 +29,24 @@ export default {
   height: 600px;
   .inner {
     height: 90%;
-    padding: 30px;
+
     background-color: #ccc;
     background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 1;
     .details {
       display: none;
+      height: 100%;
+      overflow: auto;
+      z-index: 10;
     }
   }
   &:hover .details {
     background-color: black;
     display: block;
+  }
+  &:hover .inner {
   }
 }
 </style>
