@@ -26,18 +26,28 @@ export default {
       apiUrlTv: "https://api.themoviedb.org/3/search/tv?",
     };
   },
-  /*created() {
+  created() {
     axios
       .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=9d83a4b95efc96bb81b4c69059220181&query=ritorno+al+futuro"
+        "https://api.themoviedb.org/3/movie/popular?api_key=9d83a4b95efc96bb81b4c69059220181"
       )
       .then((result) => {
         this.filmsProva = result.data.results;
       });
-  },*/
+  },
   methods: {
     searchFilmInput: function (inputString) {
       this.inputSearch = inputString.trim();
+
+      if (this.inputSearch.length === 0) {
+        axios
+          .get(
+            "https://api.themoviedb.org/3/movie/popular?api_key=9d83a4b95efc96bb81b4c69059220181"
+          )
+          .then((result) => {
+            this.filmsProva = result.data.results;
+          });
+      }
 
       const request = {
         params: {

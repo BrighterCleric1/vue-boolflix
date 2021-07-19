@@ -1,9 +1,16 @@
+@import "./fonts.scss";
 ul{
     list-style: none;
     margin: 0;
+    a{
+        text-decoration: none;
+        color: white;
+    }
 }
 
 
 *{
     color: White;
+    font-family: 'Ubuntu', sans-serif;
 }
+
