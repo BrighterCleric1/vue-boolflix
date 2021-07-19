@@ -1,12 +1,27 @@
 <template>
   <div class="film">
-    <div class="inner">
+    <div
+      class="inner"
+      :style="{
+        backgroundImage:
+          'url(' +
+          'https://image.tmdb.org/t/p/w1280' +
+          film.backdrop_path +
+          ')',
+      }"
+    >
       <div class="details">
         <ul>
           <li>Titolo: {{ film.title }}</li>
           <li>Titolo originale: {{ film.original_title }}</li>
           <li>Voto: {{ film.vote_average }}</li>
           <li>Overview: {{ film.overview }}</li>
+          <li class="flag">
+            <span>Lingua:</span>
+            <div class="flag_img">
+              <img :src="'./flags/' + film.original_language + '.svg'" alt="" />
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -31,15 +46,21 @@ export default {
     height: 90%;
 
     background-color: #ccc;
-    background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     z-index: 1;
     .details {
       display: none;
       height: 100%;
       overflow: auto;
       z-index: 10;
+      .flag_img {
+        width: 40px;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
   &:hover .details {
