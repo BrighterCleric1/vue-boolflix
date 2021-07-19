@@ -10,10 +10,15 @@
           ')',
       }"
     >
+      <div class="bg_null" v-if="film.backdrop_path == null">
+        <img src="../assets/broken-1.png" alt="" />
+      </div>
       <div class="details">
         <ul>
-          <li>Titolo: {{ film.title }}</li>
-          <li>Titolo originale: {{ film.original_title }}</li>
+          <li>Titolo: {{ film.title }} {{ film.name }}</li>
+          <li>
+            Titolo originale: {{ film.original_title }} {{ film.original_name }}
+          </li>
           <li>Voto: {{ film.vote_average }}</li>
           <li>Overview: {{ film.overview }}</li>
           <li class="flag">
@@ -41,10 +46,10 @@ export default {
 
 <style lang="scss" scoped>
 .film {
-  height: 600px;
+  height: 450px;
   .inner {
     height: 90%;
-
+    position: relative;
     background-color: #ccc;
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,12 +67,22 @@ export default {
         }
       }
     }
-  }
-  &:hover .details {
-    background-color: black;
-    display: block;
-  }
-  &:hover .inner {
+    &:hover .details {
+      background-color: black;
+      display: block;
+    }
+    .bg_null {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &:hover .bg_null {
+      display: none;
+    }
   }
 }
 </style>

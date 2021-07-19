@@ -23,7 +23,7 @@ export default {
       inputSearch: "",
       apiKey: "9d83a4b95efc96bb81b4c69059220181",
       apiUrl: "https://api.themoviedb.org/3/search/movie?",
-      apirUrlTv: "https://api.themoviedb.org/3/search/tv?",
+      apiUrlTv: "https://api.themoviedb.org/3/search/tv?",
     };
   },
   /*created() {
@@ -46,21 +46,22 @@ export default {
         },
       };
 
-      /*axios
+      axios
         .all([
           axios.get(this.apiUrl, request),
           axios.get(this.apiUrlTv, request),
         ])
         .then(
-          axios.spread((resultsFilms, resultsSeries) => {
+          axios.spread((resultsFilms, resultsTv) => {
             this.filmsProva = resultsFilms.data.results;
-            this.series = resultsSeries.data.results;
+            this.series = resultsTv.data.results;
+            this.filmsProva.push(...this.series);
           })
-        );*/
+        );
 
-      axios.get(this.apiUrl, request).then((result) => {
+      /*axios.get(this.apiUrl, request).then((result) => {
         this.filmsProva = result.data.results;
-      });
+      });*/
     },
     /* ricercaFilm: function () {
       const request = {
